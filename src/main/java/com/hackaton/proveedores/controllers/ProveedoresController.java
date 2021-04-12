@@ -5,8 +5,10 @@ import java.util.List;
 import com.hackaton.proveedores.persistence.model.Provider;
 import com.hackaton.proveedores.persistence.repository.ProveedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -23,12 +25,10 @@ class ProveedoresController {
     }
 
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public Provider findById(@PathVariable("id") String id) {
-       if(repository.findById(id).isPresent()){
-           Provider provider = repository.findById(id).get();
-           return provider;
-       }
-       throw new RuntimeException("Data not found");
+    public ResponseEntity<Provider> findById(@PathVariable("id") String id) {
+        Provider provider = repository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Provider not found for this id :: " + id));
+        return ResponseEntity.ok().body(provider);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -39,9 +39,10 @@ class ProveedoresController {
 
     @PutMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void update(@PathVariable( "id" ) String id, @RequestBody Provider resource) {
-        resource.setId(id);
-        repository.save(resource);
+    public ResponseEntity<Provider> update(@PathVariable( "id" ) String id, @RequestBody Provider provider) {
+        provider.setId(id);
+        Provider updatedProvider = repository.save(provider);
+        return ResponseEntity.ok(updatedProvider);
     }
 
     @DeleteMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
