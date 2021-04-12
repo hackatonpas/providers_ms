@@ -1,4 +1,4 @@
-package com.hackaton.proveedores.configuration;
+package com.hackaton.pas.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,23 +20,9 @@ public class SwaggerConfig {
     public Docket apiDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.hackaton.controllers"))
+                .apis(RequestHandlerSelectors.basePackage("com.hackaton.pas.controller"))
                 .paths(PathSelectors.any())
-                .build()
-                .apiInfo(getApiInfo())
-                ;
+                .build();
     }
 
-    private ApiInfo getApiInfo() {
-        return new ApiInfo(
-                "Proveedores Service API",
-                "Proveedores Service API Description",
-                "1.0",
-                "http://codmind.com/terms",
-                new Contact("Codmind", "https://codmind.com", "apis@codmind.com"),
-                "LICENSE",
-                "LICENSE URL",
-                Collections.emptyList()
-        );
-    }
 }

@@ -1,6 +1,6 @@
-package com.hackaton.proveedores.persistence.repository;
+package com.hackaton.pas.persistence.repository;
 
-import com.hackaton.proveedores.persistence.model.Provider;
+import com.hackaton.pas.persistence.model.Provider;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

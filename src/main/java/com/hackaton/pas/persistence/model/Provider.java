@@ -1,8 +1,7 @@
-package com.hackaton.proveedores.persistence.model;
+package com.hackaton.pas.persistence.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 

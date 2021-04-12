@@ -1,9 +1,9 @@
-package com.hackaton.proveedores.controllers;
+package com.hackaton.pas.controller;
 
 import java.util.List;
 
-import com.hackaton.proveedores.persistence.model.Provider;
-import com.hackaton.proveedores.persistence.repository.ProveedorRepository;
+import com.hackaton.pas.persistence.model.Provider;
+import com.hackaton.pas.persistence.repository.ProveedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
