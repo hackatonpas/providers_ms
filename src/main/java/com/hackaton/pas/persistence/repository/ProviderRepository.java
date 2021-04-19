@@ -8,6 +8,10 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "providers", path = "providers")
 public interface ProviderRepository extends MongoRepository<Provider, String> {
 
+<<<<<<< HEAD
     //Ejemplo para buscar por un parametro de la entidad
     //Provider findByNombre(@Param("nombre") String nombre);
+=======
+    Provider findByNombre(@Param("nombre") String nombre);
+>>>>>>> 47c3acbdddd02c38af574ebcbe9ef3e5e2b9bd4f
 }
